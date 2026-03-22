@@ -18,10 +18,12 @@ def random_spot():
 #this function will allow us ti click the gojoooo
 def on_mouse_down(pos):
     global message
-    random_spot()
+   
     if gojo.collidepoint(pos):  
+        random_spot()
         message= "NICE 1!"
     else:
+        random_spot()
         message="YOU MISSED"
 
 
