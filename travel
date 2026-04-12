@@ -1,0 +1,9 @@
+
+print("Enter details for 3 city")
+for i in range(1,4):
+    print(f"Enter the details for city {i}:")
+    city_name=input("city name:")
+    national_dish=input("what is the national dish:")
+    people=input("how many people live:")
+    record=(city_name,national_dish,people)
+    print(record)
