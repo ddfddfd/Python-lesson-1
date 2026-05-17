@@ -23,7 +23,7 @@ def draw():
         display_message("you WIN!","GAME OVER")
     else:
         for item in items:
-            iten.draw()
+            item.draw()
 
 
 def update():
@@ -39,7 +39,7 @@ def make_items(level):
     for i,item in enumerate(new_items):
         item.x=(i+1)*gap
         item.anchor = ("center","bottom")
-        anim=animate(item,duration=START_SPEED-current_level,y=HEIGHT,on_finished=game_over_fun)
+        anim=animate(item,duration=max(START_SPEED-current_level),y=HEIGHT,on_finished=game_over_fun)
         animations.append(anim)
     return new_items   
         
@@ -49,10 +49,11 @@ def game_over_fun():
 def on_mouse_down(pos):
     for item in items:
         if item.collidepoint(pos):
-            if "apple"in item.image:
+            if "apple" in item.image:
                 game_complete_fun()
             else:
                 game_over_fun()
+            break
 def game_complete_fun():
     global current_level,items,animations,game_complete
     for anim in animations:
@@ -65,6 +66,6 @@ def game_complete_fun():
         items.clear()
         animations.clear()
 def display_message(title,subtitle):
-    screen.draw.text(title,fontsize=50,center=CENTRE,COLOR="WHITE")
-    screen.draw.text(subtitle,fontsize=35,center=(CENTRE[0],CENTRE[1]+30),COLOR="WHITE")
+    screen.draw.text(title,fontsize=50,center=CENTRE,color="white")
+    screen.draw.text(subtitle,fontsize=35,center=(CENTRE[0],CENTRE[1]+30),color="white")
 pgzrun.go()
